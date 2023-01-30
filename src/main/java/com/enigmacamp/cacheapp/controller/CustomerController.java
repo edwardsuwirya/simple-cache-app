@@ -4,6 +4,7 @@ import com.enigmacamp.cacheapp.dto.RegisterCustomerRequest;
 import com.enigmacamp.cacheapp.dto.UpdateProfileRequest;
 import com.enigmacamp.cacheapp.model.Customer;
 import com.enigmacamp.cacheapp.service.CustomerService;
+import org.modelmapper.Conditions;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,8 @@ public class CustomerController {
     @PutMapping
     public ResponseEntity updateCustomerProfile(@RequestBody UpdateProfileRequest newProfile) throws Exception {
         Customer customer = modelMapper.map(newProfile, Customer.class);
+        modelMapper.getConfiguration().setPropertyCondition(Conditions.isNotNull());
+        System.out.println(customer.toString());
         Customer updatedCustomer = customerService.updateProfile(customer);
         return ResponseEntity.status(HttpStatus.OK).body(updatedCustomer);
     }
