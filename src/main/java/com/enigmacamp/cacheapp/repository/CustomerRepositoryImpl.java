@@ -47,7 +47,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void delete(Customer customer) {
-        Optional<Customer> customerSelected = findById(customer.getCustomerId());
-        customerSelected.ifPresent(c -> customerList.remove(c));
+        customerList.remove(customer);
     }
 }
