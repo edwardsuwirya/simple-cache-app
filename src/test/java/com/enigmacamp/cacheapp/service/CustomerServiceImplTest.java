@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(classes = CacheApplication.class)
-@ActiveProfiles("test")
+@ActiveProfiles("integration")
 class CustomerServiceImplTest {
 
     @Autowired
