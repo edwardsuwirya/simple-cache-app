@@ -8,8 +8,6 @@ import com.enigmacamp.cacheapp.utils.CustomerCache;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerServiceImplTest {
@@ -22,7 +20,7 @@ class CustomerServiceImplTest {
     @BeforeEach
     void setup() {
         CacheFactory cacheFactory = new CacheFactory();
-        customerCache = new CustomerCache(cacheFactory.getCacheManager(), "Customer-Test-Cache", Optional.of(1100));
+        customerCache = new CustomerCache(cacheFactory.getCacheManager(), "Customer-Test-Cache", 1100);
         CustomerRepository repo = new CustomerRepositoryImpl();
         customerService = new CustomerServiceImpl(repo, customerCache);
     }

@@ -8,21 +8,20 @@ import org.ehcache.config.builders.ExpiryPolicyBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
 
 import java.time.Duration;
-import java.util.Optional;
 
 public class CustomerCache {
     private final String cacheName;
     private final CacheManager cacheManager;
 
-    public CustomerCache(CacheManager cacheManager, String cacheName, Optional<Integer> expiryTime) {
+    public CustomerCache(CacheManager cacheManager, String cacheName, Integer expiryTime) {
         this.cacheName = cacheName;
         this.cacheManager = cacheManager;
 
         CacheConfigurationBuilder<String, Customer> cacheConfiguration = CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, Customer.class,
                 ResourcePoolsBuilder.heap(10));
-        if (expiryTime.isPresent()) {
+        if (expiryTime != null) {
             cacheConfiguration = cacheConfiguration
-                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofMillis(expiryTime.get())));
+                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofMillis(expiryTime)));
         }
         cacheManager.createCache(cacheName, cacheConfiguration.build());
     }
