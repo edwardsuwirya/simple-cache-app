@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="JPA with CloudSQL Postgres">
+    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Exclude null model mapper, change ddl-auto strategy to create on production properties">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/common/exceptions/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/controller/ErrorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +20,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,6 +95,7 @@
       <recent name="com.enigmacamp.cacheapp.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.enigmacamp.cacheapp.controller" />
       <recent name="com.enigmacamp.cacheapp.dto" />
       <recent name="com.enigmacamp.cacheapp.utils" />
     </key>
@@ -293,6 +296,7 @@
         <env name="DB_USERNAME" value="postgres" />
         <env name="GOOGLE_APPLICATION_CREDENTIALS" value="$USER_HOME$/Exercises/sql.json" />
         <env name="INSTANCE_CONNECTION_NAME" value="rnd-project-376007:asia-southeast2:enigma-db" />
+        <env name="CUSTOMER_CACHE_EXPIRY" value="100000" />
       </envs>
       <module name="cacheapp" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.enigmacamp.cacheapp.CacheApplication" />
@@ -393,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675060513438</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Exclude null model mapper, change ddl-auto strategy to create on production properties">
+      <created>1675064767251</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675064767251</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,7 +427,8 @@
     <MESSAGE value="Change parameter expiryTime to Integer, instead of Optional" />
     <MESSAGE value="JPA" />
     <MESSAGE value="JPA with CloudSQL Postgres" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPA with CloudSQL Postgres" />
+    <MESSAGE value="Exclude null model mapper, change ddl-auto strategy to create on production properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Exclude null model mapper, change ddl-auto strategy to create on production properties" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
