@@ -34,9 +34,8 @@ public class CustomerServiceImpl implements CustomerService {
             key = "#newProfile.customerId"
     )
     @Override
-    public Customer updateProfile(Customer newProfile) throws Exception {
-        Customer customerExisting = customerRepository.findById(newProfile.getCustomerId()).orElseThrow(() -> new Exception("Customer not found"));
-        return customerRepository.save(customerExisting);
+    public Customer updateProfile(Customer newProfile) {
+        return customerRepository.save(newProfile);
     }
 
     @CacheEvict(

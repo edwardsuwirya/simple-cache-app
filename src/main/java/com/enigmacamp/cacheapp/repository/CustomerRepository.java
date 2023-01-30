@@ -1,13 +1,7 @@
 package com.enigmacamp.cacheapp.repository;
 
 import com.enigmacamp.cacheapp.model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
-public interface CustomerRepository {
-    Customer save(Customer newCustomer);
-
-    Optional<Customer> findById(String id);
-
-    void delete(Customer customer);
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 }

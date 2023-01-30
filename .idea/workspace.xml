@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Change parameter expiryTime to Integer, instead of Optional">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/config/CacheConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-test.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Remove checking customer on repository deletion">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/CacheApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/CacheApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CacheFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,9 +34,12 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="01-data-expiry" />
+        <entry key="$PROJECT_DIR$" value="02-Spring-Boot" />
       </map>
     </option>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,6 +59,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -74,7 +80,13 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "show.migrate.to.gradle.popup": "false",
+    "spring.configuration.checksum": "f6e85495f7366634b7dbb5fa22a7a32e",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -130,21 +142,6 @@
       <filePath value="$PROJECT_DIR$" />
       <framework value="gotest" />
       <method v="2" />
-    </configuration>
-    <configuration name="CustomerServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cacheapp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.enigmacamp.cacheapp.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.enigmacamp.cacheapp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.enigmacamp.cacheapp.service.CustomerServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cacheapp" />
@@ -293,6 +290,36 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="CacheApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="DB_HOST" value="127.0.0.1" />
+        <env name="DB_NAME" value="postgres" />
+        <env name="DB_PASSWORD" value="P@ssw0rd" />
+        <env name="DB_PORT" value="5432" />
+        <env name="DB_USERNAME" value="postgres" />
+      </envs>
+      <module name="cacheapp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.enigmacamp.cacheapp.CacheApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.enigmacamp.cacheapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <extension name="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <module name="simple-cache-app" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -305,13 +332,20 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JUnit.CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted" />
+      <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTime_thenReturnBookFromCache" />
+      <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" />
+      <item itemvalue="JUnit.CustomerServiceImplTest.whenUpdateCustomer_thenCacheShouldUpdated" />
+      <item itemvalue="Spring Boot.CacheApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenUpdateCustomer_thenCacheShouldUpdated" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTime_thenReturnBookFromCache" />
-        <item itemvalue="JUnit.CustomerServiceImplTest" />
+        <item itemvalue="Spring Boot.CacheApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -326,6 +360,7 @@
       <workItem from="1674985978814" duration="2139000" />
       <workItem from="1674988135152" duration="81000" />
       <workItem from="1674988224019" duration="10664000" />
+      <workItem from="1675046195236" duration="3333000" />
     </task>
     <task id="LOCAL-00001" summary="Simple cache application">
       <created>1674990872540</created>
@@ -354,6 +389,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Simple cache application" />
     <MESSAGE value="With cache expiry time" />
@@ -367,22 +413,42 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
-          <line>57</line>
+          <line>63</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
-          <line>58</line>
+          <line>64</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
