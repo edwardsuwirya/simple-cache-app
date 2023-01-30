@@ -2,15 +2,17 @@ package com.enigmacamp.cacheapp.service;
 
 import com.enigmacamp.cacheapp.model.Customer;
 import com.enigmacamp.cacheapp.repository.CustomerRepository;
-import com.enigmacamp.cacheapp.utils.CustomerCache;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
-    private final CustomerCache cache;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerCache cache) {
+    public CustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
-        this.cache = cache;
     }
 
     @Override
@@ -18,29 +20,32 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.save(newCustomer);
     }
 
+    @Cacheable(
+            value = "customer-cache",
+            key = "#id"
+    )
     @Override
     public Customer findCustomerById(String id) throws Exception {
-        if (cache.getCustomerCache().containsKey(id)) {
-            System.out.println("Customer " + id + " hit");
-            return cache.getCustomerCache().get(id);
-        }
-        Customer customer = customerRepository.findById(id).orElseThrow(() -> new Exception("Customer not found"));
-        cache.getCustomerCache().putIfAbsent(customer.getCustomerId(), customer);
-        return customer;
+        return customerRepository.findById(id).orElseThrow(() -> new Exception("Customer not found"));
     }
 
+    @CachePut(
+            value = "customer-cache",
+            key = "#newProfile.customerId"
+    )
     @Override
     public Customer updateProfile(Customer newProfile) throws Exception {
         Customer customerExisting = customerRepository.findById(newProfile.getCustomerId()).orElseThrow(() -> new Exception("Customer not found"));
-        Customer customer = customerRepository.save(customerExisting);
-        cache.getCustomerCache().replace(customer.getCustomerId(), customer);
-        return customer;
+        return customerRepository.save(customerExisting);
     }
 
+    @CacheEvict(
+            value = "customer-cache",
+            key = "#id"
+    )
     @Override
     public void unregisterCustomer(String id) throws Exception {
         Customer customerExisting = customerRepository.findById(id).orElseThrow(() -> new Exception("Customer not found"));
-        cache.getCustomerCache().remove(id);
         customerRepository.delete(customerExisting);
     }
 }

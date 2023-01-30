@@ -1,62 +1,50 @@
 package com.enigmacamp.cacheapp.service;
 
+import com.enigmacamp.cacheapp.CacheApplication;
 import com.enigmacamp.cacheapp.model.Customer;
-import com.enigmacamp.cacheapp.repository.CustomerRepository;
-import com.enigmacamp.cacheapp.repository.CustomerRepositoryImpl;
-import com.enigmacamp.cacheapp.utils.CacheFactory;
-import com.enigmacamp.cacheapp.utils.CustomerCache;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@SpringBootTest(classes = CacheApplication.class)
+@ActiveProfiles("test")
 class CustomerServiceImplTest {
-    private CustomerCache customerCache;
 
+    @Autowired
     private CustomerService customerService;
 
     Customer dummyCustomer = new Customer(null, "Dummy customer 1", "Dummy address 1");
 
-    @BeforeEach
-    void setup() {
-        CacheFactory cacheFactory = new CacheFactory();
-        customerCache = new CustomerCache(cacheFactory.getCacheManager(), "Customer-Test-Cache", 1100);
-        CustomerRepository repo = new CustomerRepositoryImpl();
-        customerService = new CustomerServiceImpl(repo, customerCache);
-    }
-
     @Test
     void whenFindCustomerByIdSecondTime_thenReturnBookFromCache() throws Exception {
         customerService.registerCustomer(dummyCustomer);
-        assertFalse(customerCache.getCustomerCache().containsKey("1"));
-        customerService.findCustomerById("1");
-
-        assertTrue(customerCache.getCustomerCache().containsKey("1"));
-        customerService.findCustomerById("1");
+        Customer customerCacheMiss = customerService.findCustomerById("1");
+        Customer customerCacheHit = customerService.findCustomerById("1");
+        assertEquals("1", customerCacheMiss.getCustomerId());
+        assertEquals("1", customerCacheHit.getCustomerId());
     }
 
     @Test
     void whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo() throws Exception {
         customerService.registerCustomer(dummyCustomer);
-        assertFalse(customerCache.getCustomerCache().containsKey("1"));
-        customerService.findCustomerById("1");
-
-        Thread.sleep(1111);
-
-        assertFalse(customerCache.getCustomerCache().containsKey("1"));
-        customerService.findCustomerById("1");
+        Customer customerCacheMiss = customerService.findCustomerById("1");
+        Thread.sleep(1205);
+        Customer customerCacheShouldMiss = customerService.findCustomerById("1");
+        assertEquals("1", customerCacheMiss.getCustomerId());
+        assertEquals("1", customerCacheShouldMiss.getCustomerId());
     }
 
     @Test
     void whenUpdateCustomer_thenCacheShouldUpdated() throws Exception {
         customerService.registerCustomer(dummyCustomer);
-        assertFalse(customerCache.getCustomerCache().containsKey("1"));
         Customer customerCacheMiss = customerService.findCustomerById("1");
-
         customerCacheMiss.setAddress("Update dummy address");
         customerService.updateProfile(customerCacheMiss);
 
-        assertTrue(customerCache.getCustomerCache().containsKey("1"));
         Customer customerCacheHit = customerService.findCustomerById("1");
         assertEquals("Update dummy address", customerCacheHit.getAddress());
     }
@@ -64,11 +52,8 @@ class CustomerServiceImplTest {
     @Test
     void whenDeleteCustomer_thenCacheShouldDeleted() throws Exception {
         customerService.registerCustomer(dummyCustomer);
-        assertFalse(customerCache.getCustomerCache().containsKey("1"));
         Customer customerCacheMiss = customerService.findCustomerById("1");
-
         customerService.unregisterCustomer(customerCacheMiss.getCustomerId());
-
-        assertFalse(customerCache.getCustomerCache().containsKey("1"));
+        assertThrows(Exception.class, () -> customerService.findCustomerById("1"));
     }
 }

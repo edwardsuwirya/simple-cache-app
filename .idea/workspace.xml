@@ -4,8 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="With cache expiry time">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" afterDir="false" />
+    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Change parameter expiryTime to Integer, instead of Optional">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/config/CacheConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-test.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/CacheApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/CacheApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CacheFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,15 +27,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="01-data-expiry" />
       </map>
     </option>
   </component>
@@ -57,15 +67,20 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "dart.analysis.tool.window.visible": "false",
     "go.import.settings.migrated": "true",
+    "last_opened_file_path": "/Users/edwardsuwirya/Projects/Java/simple-cache-app/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -76,7 +91,7 @@
       <recent name="com.enigmacamp.cacheapp.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo">
+  <component name="RunManager" selected="JUnit.CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="simple-cache-app" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -292,11 +307,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenUpdateCustomer_thenCacheShouldUpdated" />
-        <item itemvalue="JUnit.CustomerServiceImplTest" />
+        <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTime_thenReturnBookFromCache" />
+        <item itemvalue="JUnit.CustomerServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -310,7 +325,7 @@
       <updated>1674985977698</updated>
       <workItem from="1674985978814" duration="2139000" />
       <workItem from="1674988135152" duration="81000" />
-      <workItem from="1674988224019" duration="6868000" />
+      <workItem from="1674988224019" duration="10664000" />
     </task>
     <task id="LOCAL-00001" summary="Simple cache application">
       <created>1674990872540</created>
@@ -326,7 +341,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675038939781</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Change parameter expiryTime to Integer, instead of Optional">
+      <created>1675039045802</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675039045802</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,9 +357,38 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Simple cache application" />
     <MESSAGE value="With cache expiry time" />
-    <option name="LAST_COMMIT_MESSAGE" value="With cache expiry time" />
+    <MESSAGE value="Change parameter expiryTime to Integer, instead of Optional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change parameter expiryTime to Integer, instead of Optional" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java</url>
+          <line>58</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

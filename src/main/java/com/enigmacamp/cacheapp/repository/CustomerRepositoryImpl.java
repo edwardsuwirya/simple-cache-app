@@ -1,11 +1,13 @@
 package com.enigmacamp.cacheapp.repository;
 
 import com.enigmacamp.cacheapp.model.Customer;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
     private final List<Customer> customerList = new ArrayList<>();
 
@@ -35,6 +37,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public Optional<Customer> findById(String id) {
+        System.out.println("Customer : " + id + " repo");
         Customer customerSelected = null;
         for (Customer customer : customerList) {
             if (customer.getCustomerId().equals(id)) {
@@ -47,7 +50,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public void delete(Customer customer) {
-        Optional<Customer> customerSelected = findById(customer.getCustomerId());
-        customerSelected.ifPresent(c -> customerList.remove(c));
+        customerList.remove(customer);
     }
 }
