@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/CacheApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/repository/CustomerRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/service/CustomerServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CacheFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" afterDir="false" />
+    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Simple cache application">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/utils/CustomerCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/enigmacamp/cacheapp/service/CustomerServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +21,13 @@
         <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -83,20 +77,7 @@
       <recent name="com.enigmacamp.cacheapp.utils" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted">
-    <configuration name="CacheApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.enigmacamp.cacheapp.CacheApplication" />
-      <module name="cacheapp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.enigmacamp.cacheapp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="simple-cache-app" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,6 +143,22 @@
       <option name="PACKAGE_NAME" value="com.enigmacamp.cacheapp.service" />
       <option name="MAIN_CLASS_NAME" value="com.enigmacamp.cacheapp.service.CustomerServiceImplTest" />
       <option name="METHOD_NAME" value="whenDeleteCustomer_thenCacheShouldDeleted" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cacheapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.enigmacamp.cacheapp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.enigmacamp.cacheapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.enigmacamp.cacheapp.service.CustomerServiceImplTest" />
+      <option name="METHOD_NAME" value="whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -296,11 +293,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenDeleteCustomer_thenCacheShouldDeleted" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenUpdateCustomer_thenCacheShouldUpdated" />
         <item itemvalue="JUnit.CustomerServiceImplTest" />
         <item itemvalue="JUnit.CustomerServiceImplTest.whenFindCustomerByIdSecondTime_thenReturnBookFromCache" />
-        <item itemvalue="Application.CacheApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -314,12 +311,24 @@
       <updated>1674985977698</updated>
       <workItem from="1674985978814" duration="2139000" />
       <workItem from="1674988135152" duration="81000" />
-      <workItem from="1674988224019" duration="2236000" />
+      <workItem from="1674988224019" duration="6426000" />
     </task>
+    <task id="LOCAL-00001" summary="Simple cache application">
+      <created>1674990872540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1674990872540</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Simple cache application" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple cache application" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

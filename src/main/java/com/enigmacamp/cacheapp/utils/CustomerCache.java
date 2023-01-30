@@ -4,17 +4,27 @@ import com.enigmacamp.cacheapp.model.Customer;
 import org.ehcache.Cache;
 import org.ehcache.CacheManager;
 import org.ehcache.config.builders.CacheConfigurationBuilder;
+import org.ehcache.config.builders.ExpiryPolicyBuilder;
 import org.ehcache.config.builders.ResourcePoolsBuilder;
-import org.ehcache.config.units.EntryUnit;
+
+import java.time.Duration;
+import java.util.Optional;
 
 public class CustomerCache {
     private final String cacheName;
     private final CacheManager cacheManager;
 
-    public CustomerCache(CacheManager cacheManager, String cacheName) {
+    public CustomerCache(CacheManager cacheManager, String cacheName, Optional<Integer> expiryTime) {
         this.cacheName = cacheName;
         this.cacheManager = cacheManager;
-        cacheManager.createCache(cacheName, CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, Customer.class, ResourcePoolsBuilder.newResourcePoolsBuilder().heap(10, EntryUnit.ENTRIES)));
+
+        CacheConfigurationBuilder<String, Customer> cacheConfiguration = CacheConfigurationBuilder.newCacheConfigurationBuilder(String.class, Customer.class,
+                ResourcePoolsBuilder.heap(10));
+        if (expiryTime.isPresent()) {
+            cacheConfiguration = cacheConfiguration
+                    .withExpiry(ExpiryPolicyBuilder.timeToLiveExpiration(Duration.ofMillis(expiryTime.get())));
+        }
+        cacheManager.createCache(cacheName, cacheConfiguration.build());
     }
 
     public Cache<String, Customer> getCustomerCache() {

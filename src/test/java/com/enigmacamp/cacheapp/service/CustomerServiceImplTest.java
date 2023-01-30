@@ -8,6 +8,8 @@ import com.enigmacamp.cacheapp.utils.CustomerCache;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerServiceImplTest {
@@ -20,7 +22,7 @@ class CustomerServiceImplTest {
     @BeforeEach
     void setup() {
         CacheFactory cacheFactory = new CacheFactory();
-        customerCache = new CustomerCache(cacheFactory.getCacheManager(), "Customer-Test-Cache");
+        customerCache = new CustomerCache(cacheFactory.getCacheManager(), "Customer-Test-Cache", Optional.of(1100));
         CustomerRepository repo = new CustomerRepositoryImpl();
         customerService = new CustomerServiceImpl(repo, customerCache);
     }
@@ -32,6 +34,18 @@ class CustomerServiceImplTest {
         customerService.findCustomerById("1");
 
         assertTrue(customerCache.getCustomerCache().containsKey("1"));
+        customerService.findCustomerById("1");
+    }
+
+    @Test
+    void whenFindCustomerByIdSecondTimeAndCacheIsExpired_thenReturnBookFromRepo() throws Exception {
+        customerService.registerCustomer(dummyCustomer);
+        assertFalse(customerCache.getCustomerCache().containsKey("1"));
+        customerService.findCustomerById("1");
+
+        Thread.sleep(1111);
+
+        assertFalse(customerCache.getCustomerCache().containsKey("1"));
         customerService.findCustomerById("1");
     }
 
