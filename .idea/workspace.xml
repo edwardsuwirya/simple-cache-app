@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Add exception handler controller">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/config/RedisCacheConfig.java" afterDir="false" />
+    <list default="true" id="1311b44f-149c-4ee4-ae63-206bc0338e2a" name="Changes" comment="Caching with Redis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/enigmacamp/cacheapp/config/CacheConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -365,6 +363,7 @@
       <workItem from="1674988135152" duration="81000" />
       <workItem from="1674988224019" duration="10664000" />
       <workItem from="1675046195236" duration="10675000" />
+      <workItem from="1675130982937" duration="6911000" />
     </task>
     <task id="LOCAL-00001" summary="Simple cache application">
       <created>1674990872540</created>
@@ -415,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675080474311</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Caching with Redis">
+      <created>1675085507658</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675085507658</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +446,8 @@
     <MESSAGE value="JPA with CloudSQL Postgres" />
     <MESSAGE value="Exclude null model mapper, change ddl-auto strategy to create on production properties" />
     <MESSAGE value="Add exception handler controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add exception handler controller" />
+    <MESSAGE value="Caching with Redis" />
+    <option name="LAST_COMMIT_MESSAGE" value="Caching with Redis" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
